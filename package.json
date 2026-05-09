@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build:site": "next build",
     "build:worker": "npx wrangler deploy --dry-run --outdir /tmp/worker-build --config wix/bookings/wrangler.toml --env production",
-    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "deploy": "opennextjs-cloudflare deploy",
     "start": "next start",
     "lint": "eslint apps/ components/ operations/ pages/ tests/ --ext .ts,.tsx,.js,.jsx,.mdx",
     "test": "vitest",
@@ -21,11 +21,13 @@
     "governance:freeze-check": "node scripts/governance/check-deployment-freeze.mjs",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
-    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
+    "cfbuild": "opennextjs-cloudflare build"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20260504.1",
     "@eslint/js": "^9.39.4",
+    "@opennextjs/cloudflare": "^1.19.8",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^25.6.0",
     "@types/react": "19.2.14",
@@ -42,7 +44,6 @@
     "wrangler": "^4.90.0"
   },
   "dependencies": {
-    "@opennextjs/cloudflare": "^1.19.8",
     "hono": "^4.12.18",
     "next": "^16.2.6",
     "react": "^19.2.5",

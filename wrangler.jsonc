@@ -1,29 +1,13 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "main": ".open-next/worker.js",
   "name": "jaypv-os",
-  "compatibility_date": "2026-05-09",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
+  "account_id": "56d1a7bef4dabbd308f8846ee620dd19",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-04-01",
+  "compatibility_flags": ["nodejs_compat"],
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
-  },
-  "services": [
-    {
-      "binding": "WORKER_SELF_REFERENCE",
-      "service": "jaypv-os"
-    }
-  ],
-  "r2_buckets": [
-    {
-      "binding": "NEXT_INC_CACHE_R2_BUCKET",
-      "bucket_name": "jaypv-os-opennext-cache"
-    }
-  ],
-  "images": {
-    "binding": "IMAGES"
   },
   "observability": {
     "enabled": true
