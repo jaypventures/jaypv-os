@@ -3,21 +3,21 @@ import crypto from "node:crypto";
 const secret = process.env.JPV_INTERNAL_SIGNING_SECRET;
 
 if (!secret) {
-  console.error("Missing JPV_INTERNAL_SIGNING_SECRET in local environment.");
+  console.error("Missing local JPV_INTERNAL_SIGNING_SECRET.");
   process.exit(1);
 }
 
 const payload = {
-  subjectId: "local-test-subject",
-  requestedAccess: "jpvos:test",
-  source: "local-script"
+  subjectId: process.argv[2] || "test-subject",
+  requestedAccess: process.argv[3] || "jpvos:test",
+  source: "local-runtime-test"
 };
 
-const rawBody = JSON.stringify(payload);
+const body = JSON.stringify(payload);
 
 const signature = crypto
   .createHmac("sha256", secret)
-  .update(rawBody)
+  .update(body)
   .digest("hex");
 
 const response = await fetch("https://jaypv-os.jaypventuresllc.com/api/entitlements/check", {
@@ -26,7 +26,7 @@ const response = await fetch("https://jaypv-os.jaypventuresllc.com/api/entitleme
     "content-type": "application/json",
     "x-jpv-signature": signature
   },
-  body: rawBody
+  body
 });
 
 console.log(response.status);
