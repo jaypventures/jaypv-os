@@ -11,5 +11,11 @@
   },
   "observability": {
     "enabled": true
-  }
+  },
+  "routes": [
+    {
+      "pattern": "jaypv-os.jaypventuresllc.com/*",
+      "zone_name": "jaypventuresllc.com"
+    }
+  ]
 }
