@@ -4,3 +4,5 @@ module.exports = {
     root: __dirname,
   },
 };
+
+import('@opennextjs/cloudflare').then(m => m.initOpenNextCloudflareForDev());
