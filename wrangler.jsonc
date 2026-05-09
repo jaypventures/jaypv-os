@@ -17,5 +17,26 @@
       "pattern": "jaypv-os.jaypventuresllc.com/*",
       "zone_name": "jaypventuresllc.com"
     }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "ENTITLEMENT_KV",
+      "id": "6154f3ba6c9846f38ad0a10556f7c443"
+    },
+    {
+      "binding": "AUDIT_KV",
+      "id": "b67b37c7bfc94dd58113a451761b241d"
+    },
+    {
+      "binding": "CUSTOMER_KV",
+      "id": "37301452ab1147ae8fec9be973176168"
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "JPV_OS_DB",
+      "database_name": "jpv_os_core",
+      "database_id": "a01685f9-794e-404f-ad24-bf84ab4c96c6"
+    }
   ]
 }

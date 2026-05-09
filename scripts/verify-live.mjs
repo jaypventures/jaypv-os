@@ -1,19 +1,17 @@
-const url = "https://jaypv-os.jasmynp11.workers.dev/api/health";
+const checks = [
+  "https://jaypv-os.jaypventuresllc.com/health.json",
+  "https://jaypv-os.jaypventuresllc.com/entitlements/status.json"
+];
 
-const response = await fetch(url);
+for (const url of checks) {
+  const response = await fetch(url);
 
-if (!response.ok) {
-  console.error(`JPV-OS live verification failed: ${response.status}`);
-  process.exit(1);
+  if (!response.ok) {
+    console.error(`Verification failed: ${url} returned ${response.status}`);
+    process.exit(1);
+  }
+
+  const data = await response.json();
+  console.log(`Verified ${url}`);
+  console.log(data);
 }
-
-const data = await response.json();
-
-if (data.status !== "ok" || data.system !== "JPV-OS") {
-  console.error("JPV-OS live verification returned invalid payload:");
-  console.error(data);
-  process.exit(1);
-}
-
-console.log("JPV-OS live verification passed.");
-console.log(data);

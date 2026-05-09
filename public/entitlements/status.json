@@ -1,0 +1,19 @@
+{
+  "status": "ok",
+  "system": "JPV-OS",
+  "service": "entitlement-foundation",
+  "version": "0.2.0",
+  "runtime": "cloudflare-workers",
+  "bindings": [
+    "ENTITLEMENT_KV",
+    "AUDIT_KV",
+    "CUSTOMER_KV",
+    "JPV_OS_DB"
+  ],
+  "policy": {
+    "defaultDecision": "deny",
+    "auditRequired": true,
+    "reversible": true,
+    "humanReviewSupported": true
+  }
+}
