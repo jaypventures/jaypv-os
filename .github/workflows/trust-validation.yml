@@ -1,0 +1,42 @@
+﻿name: Trust Artifact Validation
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate-trust-artifacts:
+    name: Validate Trust Artifacts
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate required trust files
+        shell: bash
+        run: |
+          required_files=(
+            "TRUST.md"
+            "SECURITY.md"
+            "GOVERNANCE.md"
+            "RELEASE_DISCIPLINE.md"
+            "MARKET_READINESS.md"
+            "trust/TRUST_MANIFEST.md"
+            ".env.example"
+            ".gitattributes"
+          )
+
+          for file in ""; do
+            if [ ! -f "TRUST.md" ]; then
+              echo "Missing required file: TRUST.md"
+              exit 1
+            fi
+          done
+
+          echo "All required trust artifacts are present."

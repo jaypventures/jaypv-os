@@ -1,19 +1,11 @@
-# JPV-OS Repository Ownership Map
-# Policy and enforcement files require owner review.
+﻿# JPV-OS CODEOWNERS
+# Repository integrity ownership
 
-* @JayPVentures-LLC
-
-/GOVERNANCE.md @JayPVentures-LLC
-/SECURITY.md @JayPVentures-LLC
-/PEOPLE-PROTECTION.md @JayPVentures-LLC
-/LEADERSHIP-STANDARD.md @JayPVentures-LLC
-/CODEOWNERS @JayPVentures-LLC
-/.github/CODEOWNERS @JayPVentures-LLC
-
-/.github/workflows/ @JayPVentures-LLC
-/scripts/ @JayPVentures-LLC
-/docs/ @JayPVentures-LLC
-
-/apps/flagship-site/ @JayPVentures-LLC
-/operations/entitlement-system/ @JayPVentures-LLC
-/wix/bookings/ @JayPVentures-LLC
+* @jaypventures
+.github/ @jaypventures
+pages/api/webhooks/ @jaypventures
+lib/jpv/ @jaypventures
+trust/ @jaypventures
+SECURITY.md @jaypventures
+GOVERNANCE.md @jaypventures
+TRUST.md @jaypventures

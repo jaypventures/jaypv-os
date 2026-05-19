@@ -1,0 +1,46 @@
+﻿name: Security Audit
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  security-audit:
+    name: Security Audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run npm audit
+        run: npm audit --audit-level=high
+
+      - name: Secret pattern scan
+        shell: bash
+        run: |
+          if grep -RInE '(sk_live_|rk_live_|whsec_|ghp_|github_pat_|xoxb-|AKIA[0-9A-Z]{16})' . \
+            --exclude-dir=.git \
+            --exclude-dir=node_modules; then
+            echo "Potential committed secret detected."
+            exit 1
+          fi
+          echo "No high-risk secret patterns detected."
+
+      - name: Build validation
+        run: npm run build --if-present
