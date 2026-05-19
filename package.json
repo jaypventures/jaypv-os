@@ -46,7 +46,8 @@
   },
   "dependencies": {
     "hono": "^4.12.18",
-    "next": "^16.2.6",
+    "next": "16.2.6",
+    "postcss": "8.5.10",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "stripe": "^22.1.1",
